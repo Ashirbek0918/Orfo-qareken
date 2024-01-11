@@ -41,7 +41,7 @@ class VideoController extends Controller
     public function download(){
         $video = Video::first();
         $name = $video->application_name;
-        return response()->download(public_path("/applications/$name"),'application');
+        return response()->download(public_path("/applications/$name"),"$name");
     }
 
 
