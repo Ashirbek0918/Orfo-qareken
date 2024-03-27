@@ -13,7 +13,6 @@ class AuthController extends Controller
     {
         $user = User::Where('phone', $request->phone)->first();
         $password = $request->password;
-        // return $user;
         if(!$user OR Hash::check($password, $user->password)){
             return ResponseController::error('Invalid password or email',401);
         }
