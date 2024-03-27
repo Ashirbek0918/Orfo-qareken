@@ -12,7 +12,7 @@ class EditController extends Controller
 
     public function edit(Request $request){
         $text = $request->text;
-        $text = preg_replace('/[^a-z0-9]+/i', ' ', $text);
+        $text = preg_replace('/\b(\w+?)\d+(\w+?)\b/iu', '$1 $2', $text);
         $words = explode(" ", $text);
         $incorrectWords = [];
 

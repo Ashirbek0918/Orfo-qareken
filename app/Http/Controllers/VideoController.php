@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Word;
 use App\Models\video;
+use App\Jobs\SaveToWords;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ResponseController;
+use App\Jobs\ArrayToWords;
 
 class VideoController extends Controller
 {
@@ -36,13 +39,11 @@ class VideoController extends Controller
         ]);
         return $file;
     }
-       
-
+        
     public function download(){
         $video = Video::first();
         $name = $video->application_name;
         return response()->download(public_path("/applications/$name"),"$name");
     }
-
 
 }
